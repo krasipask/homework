@@ -1,0 +1,15 @@
+PS /home/krasi> nslookup az104-04-vm0.kpacu.tv ns1-32.azure-dns.com  
+Server:         ns1-32.azure-dns.com
+Address:        150.171.10.32#53
+
+Name:   az104-04-vm0.kpacu.tv
+Address: 52.152.143.58
+
+PS /home/krasi> nslookup az104-04-vm1.kpacu.tv ns1-32.azure-dns.com
+Server:         ns1-32.azure-dns.com
+Address:        150.171.10.32#53
+
+Name:   az104-04-vm1.kpacu.tv
+Address: 20.231.87.204
+
+PS /home/krasi> 
