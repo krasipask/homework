@@ -1,0 +1,30 @@
+sh-4.2$ sudo mkdir /mnt/data-store2
+sh-4.2$ sudo mount /dev/sdg /mnt/data-store2
+sh-4.2$ lsblk
+NAME          MAJ:MIN RM SIZE RO TYPE MOUNTPOINT
+nvme0n1       259:0    0   8G  0 disk
+├─nvme0n1p1   259:1    0   8G  0 part /
+└─nvme0n1p128 259:2    0   1M  0 part
+nvme1n1       259:3    0  50G  0 disk /mnt/data-store
+nvme2n1       259:4    0  55G  0 disk /mnt/data-store2
+sh-4.2$ sudo resize2fs /dev/nvme2n1
+resize2fs 1.42.9 (28-Dec-2013)
+Filesystem at /dev/nvme2n1 is mounted on /mnt/data-store2; on-line resizing required
+old_desc_blocks = 4, new_desc_blocks = 4
+The filesystem on /dev/nvme2n1 is now 14417920 blocks long.
+
+sh-4.2$ df -h
+Filesystem      Size  Used Avail Use% Mounted on
+devtmpfs        465M     0  465M   0% /dev
+tmpfs           473M     0  473M   0% /dev/shm
+tmpfs           473M  420K  472M   1% /run
+tmpfs           473M     0  473M   0% /sys/fs/cgroup
+/dev/nvme0n1p1  8.0G  1.5G  6.5G  19% /
+/dev/nvme1n1     50G  160K   47G   1% /mnt/data-store
+tmpfs            95M     0   95M   0% /run/user/0
+/dev/nvme2n1     54G  160K   52G   1% /mnt/data-store2
+sh-4.2$ ls /mnt/data-store2/
+file.txt  lost+found
+sh-4.2$ cat /mnt/data-store2/file.txt
+some text has been written
+sh-4.2$
